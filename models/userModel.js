@@ -3,11 +3,12 @@ const validator = require("validator");
 const crypto = require("crypto");
 
 const userSchema = new mongoose.Schema({
-  name: {
+  username: {
     type: String,
-    required: [true, "Please enter your name"],
-    maxLength: [30, "Name cannot exceed 28 characterr"],
-    minLength: [3, "Name should have more  then 3 characters"],
+    unique: true,
+    required: [true, "Please enter your username"],
+    maxLength: [30, "username can't should have more  then 30 characters "],
+    minLength: [3, "username is so small"],
   },
   email: {
     type: String,
@@ -18,14 +19,10 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Please enter your password"],
-    minlength: [8, "Password cannot have more then 8 character"],
+    minlength: [8, "Password cannot have less than 8 character"],
   },
-  billing: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Billing",
-    },
-  ],
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
   createdAt: {
     type: Date,
     default: Date.now,
