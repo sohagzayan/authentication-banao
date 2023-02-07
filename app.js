@@ -16,8 +16,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 /* Route import */
 const user = require("./routes/userRoute");
+const facebookPostRoute = require("./routes/facebookPostRoute");
 
 app.use("/api", user);
+app.use("/api", facebookPostRoute);
 
 // middleware  error handler
 app.use(errorHandlerGard);
