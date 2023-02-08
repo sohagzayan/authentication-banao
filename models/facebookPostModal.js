@@ -29,14 +29,10 @@ const postScheme = new mongoose.Schema({
       },
     },
   ],
-  views: {
-    type: Number,
-    default: 0,
-  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
 
-module.exports = mongoose.model("User", postScheme);
+module.exports = mongoose.model("Post", postScheme);
